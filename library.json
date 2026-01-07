@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Основи Python",
+    "author": "Марк Лутц",
+    "keywords": ["python", "програмування"],
+    "type": "PDF",
+    "link": "#"
+  },
+  {
+    "title": "Java: Повний посібник",
+    "author": "Герберт Шилдт",
+    "keywords": ["java", "backend"],
+    "type": "E-Book",
+    "link": "#"
+  }
+]
