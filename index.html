@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студент | edu.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="auth-screen" class="main-card">
+        <header class="navbar">
+            <div class="brand">edu<span>.</span></div>
+            <nav class="nav-links">
+                <a href="#">Допомога</a>
+            </nav>
+        </header>
+
+        <div class="hero-section">
+            <div class="text-side">
+                <h1>Вітаємо у <span class="blue">edu.</span><br>Знайди все, що тебе цікавить.</h1>
+                <p>Інформаційно-довідкова система для студентів Національного університету "Львівська політехніка".</p>
+            </div>
+
+            <div class="form-side">
+                <div class="signup-box">
+                    <h2 id="form-title">Увійдіть в аккаунт</h2>
+                    <div class="social-auth">
+                        <button class="social-btn" id="google-login">
+                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="G">
+                            <span id="google-text">За допомогою Google</span>
+                        </button>
+                        <button class="social-btn" id="apple-login">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="A">
+                            <span id="apple-text">За допомогою Apple</span>
+                        </button>
+                    </div>
+                    
+                    <div class="divider"><span id="divider-text">Вхід за допомогою email</span></div>
+
+                    <form id="auth-form">
+                        <div class="field">
+                            <label>Ваша пошта</label>
+                            <input type="email" id="auth-email" placeholder="Наприклад, teacher@lpnu.ua" required>
+                        </div>
+                        <div class="field">
+                            <label>Пароль</label>
+                            <input type="password" id="auth-password" placeholder="Мінімум 8 символів" required>
+                        </div>
+                        <div id="confirm-password-container" class="field" style="display: none;">
+                            <label>Повторіть пароль</label>
+                            <input type="password" id="confirm-password" placeholder="Введіть пароль ще раз">
+                        </div>
+                        
+                        <div id="message-box" class="message-box"></div>
+                        
+                        <button type="submit" id="submit-btn" class="submit-btn">Увійти</button>
+                    </form>
+                    <p class="footer-link">
+                        <span id="footer-hint">Ще не маєте аккаунта?</span> 
+                        <a href="#" id="toggle-auth-link">Реєстрація</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-screen" class="main-card" style="display: none;">
+        <header class="navbar">
+            <div class="brand" onclick="showSection('main')" style="cursor: pointer;">edu<span>.</span></div>
+            <nav class="nav-links" style="display: flex; align-items: center; gap: 15px;">
+                <a href="#" id="admin-link" style="display: none;" onclick="showSection('admin')">🛡️ Адмін</a>
+                <a href="#" id="teacher-link" style="display: none;" onclick="showSection('teacher')">👨‍🏫 Панель викладача</a>
+                
+                <a href="#" id="user-profile-name" onclick="openSurvey()" style="font-weight: 600; border-right: 1px solid #e2e8f0; padding-right: 15px;">Користувач</a>
+                <a href="#" onclick="logout()" class="blue">Вихід</a>
+            </nav>
+        </header>
+
+        <main id="dashboard-content">
+            <section id="main-section">
+                <div class="hero-small">
+                    <h1>Особистий кабінет</h1>
+                    <p>Ваш помічник у навчанні та студентському житті.</p>
+                </div>
+                
+                <div class="module-grid">
+                    <div class="card" onclick="showSection('education')">
+                        <div class="icon">📅</div>
+                        <h3>Навчальний процес</h3>
+                        <p>Розклад занять та оцінки</p>
+                    </div>
+                    <div class="card" onclick="showSection('library')">
+                        <div class="icon">📖</div>
+                        <h3>Бібліотека та ресурси</h3>
+                        <p>Електронні книги та матеріали</p>
+                    </div>
+                    <div class="card" onclick="showSection('finance')">
+                        <div class="icon">💰</div>
+                        <h3>Фінансовий модуль</h3>
+                        <p>Стипендія та стан рахунку</p>
+                    </div>
+                    <div class="card" onclick="showSection('social')">
+                        <div class="icon">📢</div>
+                        <h3>Соціальний блок</h3>
+                        <p>Форум та новини університету</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education-section" style="display: none;">
+                <button class="back-btn" onclick="showSection('main')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Назад
+                </button>
+                <div class="hero-small">
+                    <h1>Навчальний процес</h1>
+                </div>
+                
+                <div class="schedule-block">
+                    <div style="padding: 15px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-top-left-radius: 12px; border-top-right-radius: 12px; font-weight: 600; color: #3b82f6; display: flex; align-items: center; gap: 8px;">
+                        <span>📅</span> Подивитись розклад занять
+                    </div>
+                    <div class="schedule-static-card" style="border-top: none; border-top-left-radius: 0; border-top-right-radius: 0; margin-top: 0;">
+                        <div class="schedule-row">
+                            <strong>Понеділок:</strong> Вища математика, ООП, Алгоритми
+                        </div>
+                        <div class="schedule-row">
+                            <strong>Вівторок:</strong> Фізичне виховання, Дискретна математика
+                        </div>
+                        <div class="schedule-row">
+                            <strong>Середа:</strong> Бази даних, Іноземна мова, Філософія
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Поточна успішність</h3>
+                <div id="subjects-list" class="subjects-grid" style="margin-top: 15px;"></div>
+            </section>
+
+            <section id="library-section" style="display: none;">
+                <button class="back-btn" onclick="showSection('main')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Назад
+                </button>
+                <div class="hero-small">
+                    <h1>Електронна бібліотека</h1>
+                </div>
+                <div class="search-container" style="margin-top: 20px;">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="library-search" placeholder="Python" style="flex: 1; background: #e0f2fe;" onkeyup="if(event.key === 'Enter') searchBooks()">
+                        <button class="submit-btn" onclick="searchBooks()" style="width: auto; padding: 0 25px; margin-top: 0;">Пошук</button>
+                    </div>
+                </div>
+
+                <ul id="book-results" class="results-list"></ul>
+            </section>
+
+            <section id="finance-section" style="display: none;">
+                <button class="back-btn" onclick="showSection('main')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Назад
+                </button>
+                <div class="hero-small">
+                    <h1>Фінансовий модуль</h1>
+                    <p>Стан вашого рахунку та виплати</p>
+                </div>
+                <div class="card">
+                    <div class="finance-item" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <span>Тип стипендії:</span>
+                        <span class="status success" style="color: green; font-weight: 600;">Академічна</span>
+                    </div>
+                    <div class="finance-item" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <span>Сума до виплати:</span>
+                        <strong>2000 ₴</strong>
+                    </div>
+                    <div class="finance-item" style="display: flex; justify-content: space-between; padding: 10px 0;">
+                        <span>Наступна виплата:</span>
+                        <span>25.01.2026</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="social-section" style="display: none;">
+                <button class="back-btn" onclick="showSection('main')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Назад
+                </button>
+                <div class="hero-small">
+                    <h1>Студентський форум</h1>
+                </div>
+                
+                <div class="forum-wrapper">
+                    <div id="comments-list" style="margin-bottom: 20px;">
+                        <div class="forum-message">
+                            <strong>Анна:</strong> Привіт, цікавить система Erasmus
+                        </div>
+                    </div>
+                    
+                    <div class="forum-input-area">
+                         <input type="text" id="comment-text" placeholder="Напишіть повідомлення для всієї групи...">
+                    </div>
+                    
+                    <button class="submit-btn" onclick="addComment()" style="width: 100%;">Відправити повідомлення</button>
+                </div>
+            </section>
+
+            <section id="teacher-section" style="display: none;">
+                <div class="hero-small">
+                    <h1>👨‍🏫 Панель керування навчанням</h1>
+                </div>
+                <div class="module-grid">
+                    <div class="card" style="grid-column: span 2;">
+                        <h3>Електронний журнал</h3>
+                        <div style="display: flex; gap: 10px; margin: 15px 0;">
+                            <select id="teacher-group-select" onchange="loadGroupForTeacher()" style="flex:1; padding:10px; border-radius:8px; border:1px solid #ddd;">
+                                <option value="">Група...</option>
+                                <option value="ПЗ-21">ПЗ-21</option>
+                            </select>
+                            <select id="teacher-subject-select" onchange="loadGroupForTeacher()" style="flex:1; padding:10px; border-radius:8px; border:1px solid #ddd;">
+                                <option value="">Предмет...</option>
+                                <option value="Веб-технології та веб-дизайн">Веб-технології</option>
+                                <option value="Вища математика">Вища математика</option>
+                            </select>
+                        </div>
+                        <div id="teacher-journal"></div>
+                    </div>
+                    <div class="card">
+                        <h3>Завантажити матеріали</h3>
+                        <input type="text" id="lib-upload-title" placeholder="Назва файлу" style="width: 100%; margin-bottom: 10px;">
+                        <input type="file" id="lib-upload-file" style="width: 100%; margin-bottom: 10px;">
+                        <button class="submit-btn" onclick="uploadToLibrary()">Опублікувати</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="admin-section" style="display: none;">
+                <div class="hero-small">
+                    <h1>🛡️ Панель адміністратора</h1>
+                </div>
+                <div class="module-grid" style="margin-bottom: 20px;">
+                    <div class="card">Студентів: <span id="total-students">0</span></div>
+                    <div class="card">Книг: <span id="total-books">0</span></div>
+                </div>
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3>Користувачі системи</h3>
+                        <button class="submit-btn" onclick="clearAllData()" style="width: auto; background: #ef4444; padding: 5px 15px; margin: 0;">Видалити всіх</button>
+                    </div>
+                    <table style="width: 100%; text-align: left;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #eee;">
+                                <th style="padding: 10px;">Ім'я</th>
+                                <th style="padding: 10px;">Група</th>
+                                <th style="padding: 10px; text-align: right;">Дія</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-users-list"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="survey-modal" class="modal-overlay" style="display: none;">
+        <div class="signup-box modal-content">
+            <h3>Налаштування профілю</h3>
+            <div class="field">
+                <label>Ваше ім'я</label>
+                <input type="text" id="setup-name" placeholder="Введіть ваше ім'я">
+            </div>
+            <div id="group-field-container" class="field">
+                <label>Група</label>
+                <input type="text" id="setup-group" placeholder="Наприклад, ПЗ-21">
+            </div>
+            <button class="submit-btn" onclick="saveProfile()">Зберегти зміни</button>
+            <button onclick="document.getElementById('survey-modal').style.display='none'" style="background:none; border:none; width:100%; margin-top:10px; cursor:pointer; color: #64748b;">Закрити</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
